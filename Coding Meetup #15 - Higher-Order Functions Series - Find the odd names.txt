@@ -1,0 +1,35 @@
+var list = [
+  { firstName: 'Aba', lastName: 'N.', country: 'Ghana', continent: 'Africa', age: 21, language: 'Python' },
+  { firstName: 'Abb', lastName: 'O.', country: 'Israel', continent: 'Asia', age: 39, language: 'Java' }
+];  
+
+function findOddNames(list) {
+  const reducer = (a,b) =>  a+b.charCodeAt(0);
+  return list.filter((person) => [...person.firstName].reduce(reducer,0)%2 );
+}
+
+/* 
+person is an element of the array "list"
+
+then ...person.firstName expands the chars of the firstName property into an array of separated strings
+
+then we use reduce with the accumulator being 0 (the total sum) and currentval being the current element that is being added on to the total sum
+
+then that is checked with the modulo operator to see whether it returns 1 or 0, 0 is returned in this case
+
+
+const arr = [10, 20, 30, 10];
+
+const reducedArr = (accumulator, currentVal) => accumulator + currentVal;
+
+
+console.log(arr.reduce(reducedArr, 5)); // output 75 */
+
+
+
+
+
+
+
+
+

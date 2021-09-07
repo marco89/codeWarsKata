@@ -1,0 +1,5 @@
+function isAgeDiverse(list) {
+  const ageBrackets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const devAgesDiv = list.map(item => parseInt(item.age > 100 ? 10 : item.age / 10));
+  return ageBrackets.every(ageBracket => devAgesDiv.includes(ageBracket));
+}

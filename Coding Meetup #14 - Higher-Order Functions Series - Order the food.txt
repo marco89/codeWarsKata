@@ -1,0 +1,12 @@
+function orderFood(list) {
+  let ret = {};
+  for (item of list) {
+    let meal = item.meal;
+    if (typeof ret[meal] === 'undefined') {
+      ret[meal] = 1;
+    } else {
+      ret[meal]++;
+    }
+  }
+  return ret;
+}

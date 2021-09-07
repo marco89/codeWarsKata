@@ -1,0 +1,4 @@
+function findAdmin(list, language) {
+  return list.filter((item) => item.language === language && item.githubAdmin === 'yes'); 
+}
+// basically we are defining a function with an argument that is item and then we are checking if language equals the language argument at the same time as checking whether githubAdmin equals yes.

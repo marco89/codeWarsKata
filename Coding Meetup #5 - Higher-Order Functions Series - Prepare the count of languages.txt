@@ -1,0 +1,33 @@
+function countLanguages(list) {
+  let ret = {};
+  for (item of list) {
+    let lang = item.language;
+    ret[lang] = typeof ret[lang] === 'undefined' ? 1 : ++ret[lang]; // ++someVariable vs. someVariable++ in JavaScript SO thread
+  }
+  return ret;
+}
+ANOTHER EXAMPLE
+
+
+function countLanguages(list) {
+  // thank you for checking out the Coding Meetup kata :)
+  // declare object to contain count for each language
+  let langCount = {};
+  
+  
+  // loop through each object in the array
+  for (let i = 0; i < list.length; i++) {
+  
+    // find language for each developer
+    // add language to object if it does exist
+    if (langCount[list[i].language] === undefined) {
+      langCount[list[i].language] = 1;
+    } else {
+      // otherwise increment language count by 1
+      langCount[list[i].language]++;
+    }  
+  }
+  
+  // return object
+  return langCount;
+}

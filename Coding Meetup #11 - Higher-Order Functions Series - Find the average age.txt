@@ -1,0 +1,10 @@
+function getAverageAge(list) {
+  let sum = 0;
+  for (const item of list) {
+    if (item.age > 0) {
+      sum = (sum + item.age);
+    }
+  }
+  sum = Math.round((sum) / list.length);
+  return sum;
+}

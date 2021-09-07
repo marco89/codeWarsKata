@@ -1,0 +1,11 @@
+function askForMissingDetails(list) {
+  let questionText = "Hi, could you please provide your ";
+  let ret = []; // creates empty arr
+  list.forEach((person) => { // iterates over array and performing function on each element (person)
+    for(const key in person) { // for loop that loops through every single attribute of the element 
+      if (person[key] === null) { // checks whether that attribute is null 
+        ret.push({...person, question: questionText + key + '.'}) // ...person spreads and clones the object to a new object. Creating a new attribute of Object with the word "question: etc" and concatenating that with the key (which in these cases is firstName/language) and then finishing off the sentence with a full stop. That is all then pushed to "ret". 
+      } 
+    }
+  })
+}

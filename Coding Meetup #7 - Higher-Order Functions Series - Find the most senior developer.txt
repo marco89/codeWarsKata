@@ -1,0 +1,10 @@
+function findSenior(list) {
+  let devOne = list[0];
+  let oldestKnownAge = devOne.age;
+  for (var dev of list) {
+    if (dev.age > oldestKnownAge) {
+      oldestKnownAge = dev.age;
+    }
+  }
+  return list.filter(dev => dev.age === oldestKnownAge)
+}

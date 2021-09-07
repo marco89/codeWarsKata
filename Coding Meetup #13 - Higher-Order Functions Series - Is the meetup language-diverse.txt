@@ -1,0 +1,15 @@
+function isLanguageDiverse(list) {
+  let ret = {};
+  for (item of list) {
+    let lang = item.language;
+    if (typeof ret[lang] === 'undefined') {
+      ret[lang] = 1; // ret[lang] is ret as an empty obj and lang as its argument
+    } else {
+      ret[lang]++;
+    }
+  }
+  let arr = Object.values(ret);
+  let min = Math.min(...arr);
+  let max = Math.max(...arr);
+  return max <= (min * 2);
+}

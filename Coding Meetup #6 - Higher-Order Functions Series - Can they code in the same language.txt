@@ -1,0 +1,9 @@
+function isSameLanguage(list) {
+  const firstLang = list[0].language;
+  
+  for (const developer of list){
+    if(developer.language !== firstLang) 
+      return false;
+  }
+  return true;
+  }

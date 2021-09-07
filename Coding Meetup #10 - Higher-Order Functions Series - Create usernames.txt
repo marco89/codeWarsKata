@@ -1,0 +1,8 @@
+function addUsername(list) {
+  var currentYear = new Date();
+  var year = currentYear.getFullYear();
+  list.forEach((entry) => {
+    entry.username = `${entry.firstName}${entry.lastName.charAt(0)}${year - entry.age}`.toLowerCase();
+  });
+  return list;
+} 
