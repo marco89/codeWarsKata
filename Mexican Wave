@@ -1,0 +1,15 @@
+function wave($people){
+$mexArr = []; // creates empty array to push the words to
+$j = strlen($people); // creates the value that is used to stop the loop 
+for ($i = 0; $i < $j; $i++) { 
+    $char = $people[$i];
+    if ($char === " ") { // if loop to check for whitespace
+        continue;
+    } else {
+    $copy = $people; // clones $people var to $copy var 
+    $copy[$i] = strtoupper($people[$i]); // capitalises the $i(th) letter each time
+    $mexArr[] = $copy; // pushes the string to the array on every loop
+    }
+}
+return $mexArr;
+}
