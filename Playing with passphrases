@@ -1,0 +1,62 @@
+<?php
+
+function playPass($s, $n) 
+{
+//declares the first letter of the alphabet AS IT'S ASCII EQUIVALENT (97)
+$first_char = ord('a'); 
+//declares the last letter of the alphabet AS IT'S ASCII EQUIVALENT
+$last_char = ord('z');  
+
+// we are able to convert the whole string to lower, so we only have to do one set of circular
+// shifted letters as the string will be case alternated later on
+$s = strtolower($s); 
+                                   
+// creates empty string to concatenate with the eventual $char variable
+$pass_phrase = ''; 
+
+// ord() converts THE FIRST LETTER OF A STRING into it's ASCII equivalent but in this case,
+// it's inside a for loop so it will be converting every letter at the $i[th] position i.e. it
+// converts every letter for the duration of the password
+for ($i = 0; $i < mb_strlen($s); $i++) {
+    $ord_char_to_int = ord($s[$i]); 
+
+    // checks if the ASCII number created on line 9 is between the 
+    // integers created on lines 5 and 6, if it is, it creates an 
+    // empty string variable called $char
+    if ($ord_char_to_int >= $first_char && $ord_char_to_int <= $last_char) { 
+        $char = '';
+        
+        // checks if the sum of $ord_char_to_int + $n is more than the value of $last_char (122)
+        // if it is, $first_char (97) and $last_char (122) and
+        // $n (1 in the hardcoded testing example) are subtracted from $last_char ()
+        if ($ord_char_to_int + $n > $last_char) { 
+            $char = chr($first_char + $ord_char_to_int + $n - $last_char); 
+        } else {
+
+            // if the sum of $ord_char_to_int + $n is less than the value of $last_char
+            // then the sum of $ord_char_to_int + $n is assigned to the $char variable
+            $char = chr($ord_char_to_int + $n); 
+        }
+
+        // uses the $pass_phrase var created on line 15 and concatenates it
+        // with the result of the ternary operator, which checks whether
+        // the modulus of $i and 2 has no remainder, and is, therefore, even
+        $pass_phrase .= $i % 2 == 0 ? strtoupper($char) : strtolower($char); 
+
+    } else {
+        
+        // uses the $pass_phrase var created on line 15 and concatenates
+        // it with the result of the ternary operator. If the 
+        // character is numeric, then perform the calculation to
+        // product the complement to 9. If non-numeric, just concatenate 
+        // the char at the $i[th] position with the $pass_phrase
+        $pass_phrase .= is_numeric($s[$i]) ? 9 - $s[$i] : $s[$i]; 
+
+    }
+    }
+    return strrev($pass_phrase);
+}
+
+echo playPass("BORN IN 2015!", 1);
+
+?>
